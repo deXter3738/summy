@@ -29,31 +29,31 @@
           <header class="panel-title">
             <h1>Whatboard</h1>
             <div class="title-actions">
-              <button type="button">?</button>
-              <button type="button">+</button>
+              <button class="button button-icon ghost" data-action="help" type="button">?</button>
+              <button class="button button-icon" data-action="new" type="button">+</button>
             </div>
           </header>
 
           <nav class="folder-nav">
-            <button class="folder-row" type="button"><span class="dot green"></span>WhatsApp inbox <strong>21</strong></button>
-            <button class="folder-row selected" type="button"><span>@</span>Needs attention <strong>8</strong></button>
-            <button class="folder-row" type="button"><span>/</span>Assigned to me <strong>6</strong></button>
-            <button class="folder-row" type="button"><span>A</span>All conversations <strong>2370</strong></button>
-            <button class="folder-row" type="button"><span>o</span>Unassigned <strong>4</strong></button>
-            <button class="folder-row" type="button"><span>=</span>Dashboard</button>
-            <button class="folder-row" type="button"><span>T</span>Team inbox <em>v</em></button>
-            <button class="folder-row" type="button"><span>M</span>Campaigns <em>defer</em></button>
-            <button class="folder-row" type="button"><span>V</span>Automations <em>&gt;</em></button>
+            <button class="folder-row" data-filter="all" type="button"><span class="dot green"></span>WhatsApp inbox <strong>21</strong></button>
+            <button class="folder-row selected" data-filter="attention" type="button"><span>@</span>Needs attention <strong>8</strong></button>
+            <button class="folder-row" data-filter="mine" type="button"><span>/</span>Assigned to me <strong>6</strong></button>
+            <button class="folder-row" data-filter="all" type="button"><span>A</span>All conversations <strong>2370</strong></button>
+            <button class="folder-row" data-filter="unassigned" type="button"><span>o</span>Unassigned <strong>4</strong></button>
+            <button class="folder-row" data-filter="dashboard" type="button"><span>=</span>Dashboard</button>
+            <button class="folder-row" data-filter="team" type="button"><span>T</span>Team inbox <em>v</em></button>
+            <button class="folder-row" data-filter="campaigns" type="button"><span>M</span>Campaigns <em>defer</em></button>
+            <button class="folder-row" data-filter="automations" type="button"><span>V</span>Automations <em>&gt;</em></button>
           </nav>
 
           <div class="subfolders">
-            <span>Open conversations</span>
-            <span>Pending follow-ups</span>
-            <span>Template messages</span>
-            <span>Click-to-chat links</span>
+            <button data-filter="all" type="button">Open conversations</button>
+            <button data-filter="attention" type="button">Pending follow-ups</button>
+            <button data-filter="automations" type="button">Template messages</button>
+            <button data-filter="team" type="button">Click-to-chat links</button>
           </div>
 
-          <button class="folder-row ai-row" type="button"><span>*</span>Keyword auto-replies <em>&gt;</em></button>
+          <button class="folder-row ai-row" data-filter="automations" type="button"><span>*</span>Keyword auto-replies <em>&gt;</em></button>
         </aside>
 
         <aside class="conversation-list">
@@ -63,91 +63,58 @@
               <strong>Needs attention</strong>
             </div>
           </header>
+          <div class="search-box">
+            <input id="search-input" class="input" type="search" placeholder="Search name, phone, or keyword" />
+          </div>
           <div class="list-tools">
-            <button type="button">8 Open v</button>
-            <button type="button">Newest v</button>
+            <button class="button ghost compact" type="button">8 Open v</button>
+            <button class="button ghost compact" type="button">Newest v</button>
           </div>
           <div id="conversation-list" class="thread-list"></div>
         </aside>
 
         <section class="chat">
           <header class="chat-head">
-            <h2>Neha Sharma</h2>
+            <h2 id="chat-title">Neha Sharma</h2>
             <div class="chat-actions">
-              <button type="button">*</button>
-              <button type="button">...</button>
-              <button type="button">[]</button>
-              <button type="button">r</button>
-              <button class="close-btn" type="button">Close</button>
+              <span id="channel-badge" class="badge success">WhatsApp</span>
+              <span id="status-badge" class="badge">Open</span>
+              <button class="button button-icon ghost" data-action="star" type="button">*</button>
+              <button class="button button-icon ghost" data-action="more" type="button">...</button>
+              <button class="button button-icon ghost" data-action="template" type="button">[]</button>
+              <button class="button button-icon ghost" data-action="refresh" type="button">r</button>
+              <button id="close-conversation" class="button primary compact" type="button">Close</button>
             </div>
           </header>
 
-          <div class="messages">
-            <article class="photo-message">
-              <span class="avatar green-avatar">V</span>
-              <div class="photo-bubble">
-                <div class="feature-preview" aria-label="WhatsApp MVP feature preview">
-                  <div class="preview-header">
-                    <strong>WhatsApp MVP</strong>
-                    <span>BSP-managed API</span>
-                  </div>
-                  <div class="feature-grid">
-                    <span>Open 21</span>
-                    <span>Pending 8</span>
-                    <span>Resolved 36</span>
-                    <span>Avg response 4m</span>
-                  </div>
-                  <div class="status-strip">
-                    <b>Sent</b>
-                    <b>Delivered</b>
-                    <b>Read</b>
-                  </div>
-                </div>
-                <div class="message-meta">[] 1m</div>
-              </div>
-            </article>
-            <article class="text-message">
-              <span class="avatar green-avatar">N</span>
-              <div class="text-bubble">
-                Hi, I came from the QR link on Instagram. Can someone confirm delivery
-                time and share the return policy template?
-                <div class="message-meta">[] 1m</div>
-              </div>
-            </article>
-            <article class="text-message agent-message">
-              <span class="avatar gray-avatar">A</span>
-              <div class="text-bubble">
-                Auto-assigned to Asha by round-robin. Suggested canned replies:
-                /hours, /return, /delivery.
-                <div class="message-meta">delivered 1m</div>
-              </div>
-            </article>
-          </div>
+          <div id="messages" class="messages"></div>
 
           <footer class="composer">
             <div class="reply-mode">[] WhatsApp reply v</div>
-            <input type="text" placeholder="Use /hi, /price, /hours or Ctrl K" />
+            <input id="reply-input" type="text" placeholder="Use /hi, /price, /hours or Ctrl K" />
             <div class="composer-bar">
               <div>
-                <button type="button">!</button>
-                <button type="button">|</button>
-                <button type="button">:)</button>
-                <button type="button">[]</button>
+                <button class="button button-icon ghost" data-reply="/price" type="button">!</button>
+                <button class="button button-icon ghost" data-reply="/hours" type="button">|</button>
+                <button class="button button-icon ghost" data-reply="/hi" type="button">:)</button>
+                <button class="button button-icon ghost" data-reply="/return" type="button">[]</button>
               </div>
-              <button class="send-btn" type="button">Send v</button>
+              <button id="send-reply" class="button primary compact" type="button">Send v</button>
             </div>
           </footer>
         </section>
 
         <aside class="details-panel">
-          <header class="detail-tabs">
-            <button type="button">Details</button>
-            <button class="active" type="button">Activity</button>
-            <button type="button">Notes</button>
-            <button class="mini" type="button">[]</button>
+          <header class="detail-header">
+            <div class="tabs-list" role="tablist" aria-label="Conversation side panel">
+              <button class="tabs-trigger active" data-tab="details" type="button">Details</button>
+              <button class="tabs-trigger" data-tab="activity" type="button">Activity</button>
+              <button class="tabs-trigger" data-tab="notes" type="button">Notes</button>
+            </div>
+            <button class="button button-icon ghost" data-action="panel" type="button">[]</button>
           </header>
 
-          <section class="contact-details">
+          <section id="contact-details" class="contact-details card" data-section="details">
             <div class="profile-line">
               <span class="avatar green-avatar">N</span>
               <div>
@@ -156,9 +123,9 @@
               </div>
             </div>
             <div class="tag-row">
-              <span>VIP</span>
-              <span>Lead</span>
-              <span>Instagram QR</span>
+              <span class="badge success">VIP</span>
+              <span class="badge">Lead</span>
+              <span class="badge secondary">Instagram QR</span>
             </div>
             <div class="attribute-grid">
               <p><span>Status</span><b>Open</b></p>
@@ -171,43 +138,40 @@
           </section>
 
           <section class="right-scroll">
-            <div class="right-group">
+            <div class="right-group card" data-section="activity">
               <h4>Activity logs</h4>
-              <p><span>1m</span><b>Message received from WhatsApp</b></p>
-              <p><span>1m</span><b>Round-robin assigned to Asha</b></p>
-              <p><span>2m</span><b>Lead source tracked: Instagram QR</b></p>
-              <p><span>5m</span><b>Template delivery status synced</b></p>
+              <div id="activity-log"></div>
             </div>
-            <div class="right-group">
+            <div class="right-group card" data-section="notes">
               <h4>Internal notes</h4>
               <label class="note-box">
                 <span>Private handoff note</span>
-                <textarea>VIP lead. Confirm delivery ETA, then send approved return-policy template.</textarea>
+                <textarea id="internal-note" class="textarea"></textarea>
               </label>
-              <p><span>Asha</span><b>Prefers WhatsApp updates only.</b></p>
+              <div id="saved-notes"></div>
             </div>
-            <div class="right-group">
+            <div class="right-group card" data-section="details">
               <h4>Visible MVP modules</h4>
-              <p><span>Keep</span><b>Conversation summary</b></p>
-              <p><span>Keep</span><b>Search by name, phone, keyword</b></p>
-              <p><span>Keep</span><b>WhatsApp API connection</b></p>
-              <p><span>Keep</span><b>Templates + message status</b></p>
-              <p><span>Keep</span><b>Contact profile, tags, history</b></p>
-              <p><span>Keep</span><b>Canned replies + shortcuts</b></p>
-              <p><span>Keep</span><b>Keyword auto-reply rules</b></p>
-              <p><span>Keep</span><b>Roles, permissions, team load</b></p>
-              <p><span>Keep</span><b>Lead source + conversion tracking</b></p>
-              <p><span>Keep</span><b>Click-to-chat links and aliases</b></p>
-              <p><span>Simplify</span><b>Billing + invoice viewing</b></p>
-              <p><span>Simplify</span><b>Round-robin assignment</b></p>
-              <p><span>Simplify</span><b>Support contact form</b></p>
-              <p><span>Defer</span><b>Bulk campaigns + analytics</b></p>
+              <p><span class="badge success">Keep</span><b>Conversation summary</b></p>
+              <p><span class="badge success">Keep</span><b>Search by name, phone, keyword</b></p>
+              <p><span class="badge success">Keep</span><b>WhatsApp API connection</b></p>
+              <p><span class="badge success">Keep</span><b>Templates + message status</b></p>
+              <p><span class="badge success">Keep</span><b>Contact profile, tags, history</b></p>
+              <p><span class="badge success">Keep</span><b>Canned replies + shortcuts</b></p>
+              <p><span class="badge success">Keep</span><b>Keyword auto-reply rules</b></p>
+              <p><span class="badge success">Keep</span><b>Roles, permissions, team load</b></p>
+              <p><span class="badge success">Keep</span><b>Lead source + conversion tracking</b></p>
+              <p><span class="badge success">Keep</span><b>Click-to-chat links and aliases</b></p>
+              <p><span class="badge warning">Simplify</span><b>Billing + invoice viewing</b></p>
+              <p><span class="badge warning">Simplify</span><b>Round-robin assignment</b></p>
+              <p><span class="badge warning">Simplify</span><b>Support contact form</b></p>
+              <p><span class="badge secondary">Defer</span><b>Bulk campaigns + analytics</b></p>
             </div>
           </section>
 
-          <form class="note-composer">
-            <input type="text" placeholder="Add internal note" />
-            <button type="button">Save</button>
+          <form id="note-form" class="note-composer">
+            <input class="input" type="text" placeholder="Add internal note" />
+            <button class="button primary" type="button">Save</button>
           </form>
         </aside>
       </section>
